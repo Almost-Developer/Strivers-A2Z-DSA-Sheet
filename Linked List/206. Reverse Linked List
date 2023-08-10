@@ -1,0 +1,38 @@
+Reverse Linked List
+
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+Example 1:
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+ 
+Constraints:
+The number of nodes in the list is the in range [0, 5000].
+-5000 <= Node.val <= 5000
+
+Solution.
+/* Approach:
+1. changes to be done add a null node at the front, omit the last node's addressing to null, and reverse the direction of nodes.
+2. take a dummy node, take the head node, and point to the dummy node
+3. shift the dummy node and head node by one place.
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode dummy = null;
+        while(head != null) {
+            ListNode temp = head.next;
+            head.next = dummy;
+            dummy = head;
+            head = temp;
+        }
+        return dummy;
+    }
+}
